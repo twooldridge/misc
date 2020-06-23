@@ -1,0 +1,13 @@
+This folder contains work related to running the McDonald Kreitman test on genes in Ppol and Pman.
+
+The first step uses the vcf2MK program (https://github.com/russcd/vcf2MK) to generate counts of dn,ds,etc. for transcripts in the genome. This program has two important requirements to work:
+
+1. GFFs must have CDS entries only. Also, these gffs must be filtered so that there are no entries missing a phase value ('.'). There should only be a handful of such entries in the whole genome gff. These gffs can be found in the cds_gffs folder.
+2. VCFs must include non-variant as well as variant sites. To produce these, I re-ran GATK's joint genotyper on just the PO and BW populations to output these sites. I did the same for leucopus on each reference. Links to these vcfs are in the PO and BW folders. I have yet to run vcf2MK on the filtered vcfs, as filtering non-variant and variant sites requires pretty different criteria.
+
+Once vcf2MK successfully completes (just a few hours per chromosome), the output is converted to SnIPRE-style input using Allison's detailed2SnIPRE.py. This runs in a minute or less.
+
+
+
+
+
